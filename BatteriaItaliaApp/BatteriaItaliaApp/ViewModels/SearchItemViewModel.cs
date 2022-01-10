@@ -10,50 +10,24 @@ using Xamarin.Forms;
 
 namespace BatteriaItaliaApp.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class SearchItemViewModel : BaseViewModel
     {
         private WorkOrder _selectedItem;
 
+        public Command SearchCommand { get; }
+
         public ObservableCollection<WorkOrder> Items { get; }
         public Command LoadItemsCommand { get; }
-        public Command AddItemCommand { get; }
-
-        public Command SearchItemCommand { get; }
         public Command<WorkOrder> ItemTapped { get; }
-
-        public ItemsViewModel()
+        public SearchItemViewModel()
         {
-            Title = "Browse";
+            Title = "Cerca";
             Items = new ObservableCollection<WorkOrder>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadItemCommand("2"));//TODO id in input da utente
 
             ItemTapped = new Command<WorkOrder>(OnItemSelected);
+            SearchCommand = new Command(OnSearchItem);
 
-            AddItemCommand = new Command(OnAddItem);
-            SearchItemCommand = new Command(OnSearchItem);
-        }
-
-        async Task ExecuteLoadItemsCommand()
-        {
-            IsBusy = true;
-
-            try
-            {
-                Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
-                foreach (var item in items)
-                {
-                    Items.Add(item);
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-            finally
-            {
-                IsBusy = false;
-            }
         }
 
         public void OnAppearing()
@@ -72,14 +46,29 @@ namespace BatteriaItaliaApp.ViewModels
             }
         }
 
-        private async void OnAddItem(object obj)
+        private async void OnSearchItem(object obj)
         {
             await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
-        private async void OnSearchItem(object obj)
+        async Task ExecuteLoadItemCommand(string id)
         {
-            await Shell.Current.GoToAsync(nameof(SearchItemPage));
+            IsBusy = true;
+
+            try
+            {
+                Items.Clear();
+                var item = await DataStore.GetItemAsync(id);
+                Items.Add(item);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         async void OnItemSelected(WorkOrder item)
@@ -87,7 +76,6 @@ namespace BatteriaItaliaApp.ViewModels
             if (item == null)
                 return;
 
-            // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
     }

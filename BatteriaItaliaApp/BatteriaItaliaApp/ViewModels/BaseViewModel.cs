@@ -10,7 +10,7 @@ namespace BatteriaItaliaApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public IDataStore<WorkOrder> DataStore => DependencyService.Get<IDataStore<WorkOrder>>();
 
         bool isBusy = false;
         public bool IsBusy

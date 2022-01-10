@@ -8,13 +8,20 @@
              ios:Page.UseSafeArea="true">
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
-            <Label Text="Text" FontSize="Medium" />
-            <Entry Text="{Binding Text, Mode=TwoWay}" FontSize="Medium" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Description, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
+            <Label Text="Nome" FontSize="Medium" IsVisible="{Binding NomeVisible, Mode=TwoWay}"/>
+            <Editor Text="{Binding Nome, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" IsVisible="{Binding NomeVisible, Mode=TwoWay}"/>
+            <Label Text="Cognome" FontSize="Medium" IsVisible="{Binding CognomeVisible, Mode=TwoWay}"/>
+            <Editor Text="{Binding Cognome, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" IsVisible="{Binding CognomeVisible, Mode=TwoWay}"/>
+            <Label Text="Telefono" FontSize="Medium" IsVisible="{Binding TelefonoVisible, Mode=TwoWay}"/>
+            <Editor Text="{Binding Telefono, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" IsVisible="{Binding TelefonoVisible, Mode=TwoWay}"/>
+
+            <Label Text="Tipo Oggetto" FontSize="Medium" IsVisible="{Binding TipoOggettoVisible, Mode=TwoWay}"/>
+            <Editor Text="{Binding TipoOggetto, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" IsVisible="{Binding TipoOggettoVisible, Mode=TwoWay}"/>
+            <Label Text="Difficoltà" FontSize="Medium" IsVisible="{Binding DifficoltaVisible, Mode=TwoWay}"/>
+            <Picker IsVisible="{Binding DifficoltaVisible, Mode=TwoWay}" ItemsSource="{Binding Difficoltas}" SelectedItem="{Binding Difficolta, Mode=TwoWay}"></Picker>
             <StackLayout Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Indietro" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="{Binding SalvaBtnText, Mode=TwoWay}" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" ></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

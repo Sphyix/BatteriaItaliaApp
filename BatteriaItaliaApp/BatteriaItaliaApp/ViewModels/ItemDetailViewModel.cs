@@ -12,6 +12,7 @@ namespace BatteriaItaliaApp.ViewModels
         private string itemId;
         private string text;
         private string description;
+        private string note;
         public string Id { get; set; }
 
         public string Text
@@ -24,6 +25,12 @@ namespace BatteriaItaliaApp.ViewModels
         {
             get => description;
             set => SetProperty(ref description, value);
+        }
+
+        public string Note
+        {
+            get => note;
+            set => SetProperty(ref note, value);
         }
 
         public string ItemId
@@ -45,8 +52,11 @@ namespace BatteriaItaliaApp.ViewModels
             {
                 var item = await DataStore.GetItemAsync(itemId);
                 Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                Text = "Nome: " + item.Cliente;
+                Description = "Descrizione: " + item.Descrizione;
+                Note = "Note: " + item.Note;
+                //Text = item.Text;
+                //Description = item.Description;
             }
             catch (Exception)
             {

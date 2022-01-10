@@ -15,8 +15,9 @@ namespace BatteriaItaliaApp.Services
         {
             items = new List<WorkOrder>()
             {
-                new WorkOrder { WorkId = Guid.NewGuid().ToString(), TipoOggetto = "Bicicletta", Stato=Stato.DaFare, Difficolta=Difficolta.Facile, Descrizione="Batteria da ricostruire", Nome="Mario", Cognome="Bianchi", Telefono="0987654321" },
-                new WorkOrder { WorkId = Guid.NewGuid().ToString(), TipoOggetto = "Monopattino", Stato=Stato.DaFare, Difficolta=Difficolta.Facile, Descrizione="Batteria da ricostruire", Nome="Federico", Cognome="Bianchi", Telefono="1234567890" },
+                new WorkOrder { WorkId = Guid.NewGuid().ToString(), TipoOggetto = "Bicicletta", Stato=Stato.DaFare, Difficolta=Difficolta.Facile, Descrizione="Batteria da ricostruire", Nome="Mario", Cognome="Bianchi", Telefono="0987654321", Id="01" },
+                new WorkOrder { WorkId = Guid.NewGuid().ToString(), TipoOggetto = "Monopattino", Stato=Stato.Preventivo, Difficolta=Difficolta.Difficile, Descrizione="Non si accende", Nome="Federico", Cognome="Bianchi", Telefono="1234567890", Id="02" },
+                new WorkOrder { WorkId = Guid.NewGuid().ToString(), TipoOggetto = "Trapano", Stato=Stato.DaFare, Difficolta=Difficolta.Medio, Descrizione="Motore non funzionante", Nome="Roberto", Cognome="Bianchi", Telefono="1234567890", Id="03", Note="Motore bruciato da sostituire, consigliato sostituzione batterie in quanto poco performanti" },
             };
         }
 

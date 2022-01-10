@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
+using static BatteriaItaliaApp.Models.Enums;
 
 namespace BatteriaItaliaApp.ViewModels
 {
@@ -46,16 +47,34 @@ namespace BatteriaItaliaApp.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            var user = Username.ToLowerInvariant();
-            var psw = Password.ToLowerInvariant();
-            if (string.IsNullOrEmpty(user) || string.IsNullOrEmpty(psw))
+            if (string.IsNullOrEmpty(Username) && string.IsNullOrEmpty(Password))
             {
-                ShowError();
+                ShowError(Errors.EmptyBoth);
                 return;
             }
+            else if (string.IsNullOrEmpty(Username))
+            {
+                ShowError(Errors.EmptyUser);
+                return;
+            } 
+            else if (string.IsNullOrEmpty(Password)){
+                ShowError(Errors.EmptyPsw);
+                return;
+            }
+            else
+            {
+                var user = Username.ToLowerInvariant();
+                var psw = Password.ToLowerInvariant();
+                //Do Login
+                if (true) //Login true 
+                {
+                    await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                }
+            }
+            
 
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            
         }
 
         protected virtual void OnPropertyChanged(string propertyName = null)
@@ -63,9 +82,27 @@ namespace BatteriaItaliaApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        private async void ShowError()
+        private async void ShowError(Errors error)
         {
-            await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Username o password sono errati", "OK");
+            switch (error)
+            {
+                case Errors.EmptyUser:
+                    await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Inserire un username valido", "OK");
+                    break;
+                case Errors.EmptyPsw:
+                    await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Inserire una password valida", "OK");
+                    break;
+                case Errors.EmptyBoth:
+                    await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Inserire username e password", "OK");
+                    break;
+                case Errors.WrongLogin:
+                    await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Username o password sono errati", "OK");
+                    break;
+                default:
+                    await App.Current.MainPage.DisplayAlert("Autenticazione Fallita", "Errore durante il login, riprovare piu tardi", "OK");
+                    break;
+            }
+                
         }
     }
 }

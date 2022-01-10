@@ -10,12 +10,17 @@ namespace BatteriaItaliaApp.Views
 {
     public partial class NewItemPage : ContentPage
     {
-        public Item Item { get; set; }
+        public WorkOrder Item { get; set; }
 
         public NewItemPage()
         {
             InitializeComponent();
             BindingContext = new NewItemViewModel();
+        }
+
+        private void Step_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

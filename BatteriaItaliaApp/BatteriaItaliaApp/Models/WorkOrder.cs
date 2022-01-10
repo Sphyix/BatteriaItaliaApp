@@ -11,10 +11,5 @@ namespace BatteriaItaliaApp.Models
         public Difficolta Difficolta { get; set; }
         public string Descrizione { get; set; }
         public string Note { get; set; }
-
-        public static explicit operator WorkOrder(Item v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

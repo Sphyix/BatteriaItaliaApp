@@ -15,7 +15,7 @@ namespace BatteriaItaliaApp
             var services = new ServiceCollection();
 
             //add services
-            services.AddHttpClient<IDataStore<Item>, ApiService>(c =>
+            services.AddHttpClient<IDataStore<WorkOrder>, ApiService>(c =>
             {
                 c.BaseAddress = new Uri("http://10.40.12.100:19752/api/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
@@ -23,6 +23,7 @@ namespace BatteriaItaliaApp
 
             //add viewmodels
             services.AddTransient<ItemsViewModel>();
+            services.AddTransient<SearchItemViewModel>();
             //services.AddTransient<AddBookViewModel>();
             //services.AddTransient<BookDetailsViewModel>();
 

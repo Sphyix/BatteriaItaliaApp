@@ -15,5 +15,13 @@ namespace BatteriaItaliaApp.Models
         public string Via { get; set; }
         public string Civico { get; set; }
 
+        public string Cliente
+        {
+            get
+            {
+                return this.Nome + " " + this.Cognome;
+            }
+        }
+
     }
 }

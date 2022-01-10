@@ -2,7 +2,7 @@
 
 namespace BatteriaItaliaApp.Models
 {
-    public class Item
+    public class OLDItem
     {
         public string Id { get; set; }
         public string Text { get; set; }

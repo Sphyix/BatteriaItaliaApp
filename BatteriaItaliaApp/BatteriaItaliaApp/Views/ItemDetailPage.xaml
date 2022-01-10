@@ -4,11 +4,15 @@
              x:Class="BatteriaItaliaApp.Views.ItemDetailPage"
              Title="{Binding Title}">
 
-    <StackLayout Spacing="20" Padding="15">
-        <Label Text="Text:" FontSize="Medium" />
+    <StackLayout Spacing="4" Padding="15">
         <Label Text="{Binding Text}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
         <Label Text="{Binding Description}" FontSize="Small"/>
+        <Label Text="{Binding Note}" FontSize="Small"/>
+        <Image Source="https://aka.ms/campus.jpg" />
+
+        <Label Text="Sposta in" FontSize="Medium" IsVisible="{Binding DifficoltaVisible, Mode=TwoWay}"/>
+        <Picker IsVisible="{Binding DifficoltaVisible, Mode=TwoWay}" ItemsSource="{Binding Difficoltas}" SelectedItem="{Binding Difficolta, Mode=TwoWay}"></Picker>
+        <Button Text="Salva" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand" ></Button>
     </StackLayout>
     
 </ContentPage>

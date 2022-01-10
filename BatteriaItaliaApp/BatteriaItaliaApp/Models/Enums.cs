@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BatteriaItaliaApp.Models
@@ -12,14 +13,26 @@ namespace BatteriaItaliaApp.Models
             DaFare,
             InAttesa,
             Finito,
-            Ritirato
+            Ritirato,
+            NonFattibile
         }
 
         public enum Difficolta
         {
+            [Description("Green")]
             Facile,
+            [Description("Yellow")]
             Medio,
+            [Description("Red")]
             Difficile
+        }
+
+        public enum Errors
+        {
+            EmptyUser,
+            EmptyPsw,
+            EmptyBoth,
+            WrongLogin
         }
     }
 }
