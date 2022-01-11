@@ -24,13 +24,13 @@
                 SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Spacing="3" Padding="15">
+                    <!--<StackLayout Spacing="3" Padding="15">
                         <Label Text="ID" FontSize="Medium"/>
                         <Editor Text="" AutoSize="TextChanges" FontSize="Small" Margin="0"/>
                         <StackLayout Orientation="Horizontal">
                             <Button Text="Cerca" Command="{Binding LoadItemsCommand}" HorizontalOptions="FillAndExpand"></Button>
                         </StackLayout>
-                    </StackLayout>
+                    </StackLayout>-->
                     <StackLayout Orientation="Horizontal" x:DataType="model:WorkOrder">
                         <Grid>
                             <Grid.ColumnDefinitions>
