@@ -1,22 +1,21 @@
-﻿using BatteriaItaliaApp.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace BatteriaItaliaApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class TestHomePage : TabbedPage
     {
-        public LoginPage()
+        public TestHomePage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
-
+            //this.Children.RemoveAt(0);
         }
     }
 }

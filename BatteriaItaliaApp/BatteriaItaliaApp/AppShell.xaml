@@ -29,13 +29,14 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
+    <!--<TabBar>
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
+    </TabBar>-->
 
     <TabBar>
-        <ShellContent Title="Preventivo" Icon="icon_feed.png" Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}" />
-        <ShellContent Title="Browse" Icon="icon_feed.png" Route="ItemsPage2" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Title="Preventivo" Icon="icon_feed.png" Route="ItemsPage" ContentTemplate="{DataTemplate local:ItemsPage}"/>
+        <ShellContent Title="Browse" Icon="icon_feed.png" Route="ItemsPage2" ContentTemplate="{DataTemplate local:ItemsPage}" IsEnabled="False" />
+        <!--<ShellContent Title="Prova" Icon="icon_feed.png" Route="TestHomePage" ContentTemplate="{DataTemplate local:TestHomePage}"/>-->
     </TabBar>
 
     <!--

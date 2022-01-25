@@ -68,10 +68,10 @@ namespace BatteriaItaliaApp.ViewModels
                 //Do Login
                 if (true) //Login true 
                 {
-                    await Shell.Current.GoToAsync($"//{nameof(ItemsPage)}");
+                    await Shell.Current.GoToAsync($"//{nameof(TestHomePage)}");
                 }
             }
-            
+
 
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             
